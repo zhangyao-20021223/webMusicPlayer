@@ -5,24 +5,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/webMusicPlayer.css">
-    <script src="./js/webMusicPlayer.js"></script>
     <title>音乐播放器</title>
+    <script defer src="js/style.js"></script>
+    <script defer src="js/player.js"></script>
+
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <div id="webMusicPlayer_bodyBar">
-        <div id="webMusicPlayer_musicImages">
-            
+    <div id="musicPlayerBeforeBar">
+        <div id="musicPlayerAllBar">
+            <div id="musicPlayerImgBar"><img id="musicPlayerImgBar_img" src="./img/提灯照河山 - 泠鸢yousa.png" alt="#"></div>
+            <div id="musicPlayerControlBar">
+                <div id="musicPlayerControlBar_1">
+                    <p id="musicPlayerControlBar_information_name">提灯照河山</p>
+                    <p id="musicPlayerControlBar_information_author">泠鸢yousa</p>
+                </div>
+                <div id="musicPlayerControlBar_2"><img id="button_qianjin" src="./svg/previous.svg" type="image/svg+xml">
+                </div>
+                <div id="musicPlayerControlBar_3"><img id="button_zanting" src="./svg/zanting.svg" type="image/svg+xml">
+                </div>
+                <div id="musicPlayerControlBar_4"><img id="button_houtui" src="./svg/previous.svg" type="image/svg+xml">
+                </div>
+                <div id="musicPlayerControlBar_5"><img id="button_liebiao" src="./svg/liebiao.svg" type="image/svg+xml">
+                </div>
+            </div>
+            <div id="musicPlayerLyricBar">
+                <p class="musicPlayerLyricBar_content">提灯盏 万千星海照的河山</p>
+                <p class="musicPlayerLyricBar_content">提灯盏 万千星海 照得河山</p>
+                <p class="musicPlayerLyricBar_content">问故人 何时归来 比肩看</p>
+                <p class="musicPlayerLyricBar_content">提灯照夜 遍看河山</p>
+                <p class="musicPlayerLyricBar_content">小楼风满 独入我怀袖间</p>
+                <p class="musicPlayerLyricBar_content">长篙破月 轻舟江海</p>
+                <p class="musicPlayerLyricBar_content">一樽星汉 洒祭千秋长卷</p>
+                <p class="musicPlayerLyricBar_content"> 何人共比肩 惟雪</p>
+                <p class="musicPlayerLyricBar_content"> 何人共相携 日月</p>
+                <p class="musicPlayerLyricBar_content"> 如朝暮昼夜 开谢</p>
+                <p class="musicPlayerLyricBar_content">或将前尘孤身再踏遍</p>
+                <p class="musicPlayerLyricBar_content">故人别 余我长夜 提灯山川</p>
+            </div>
         </div>
-        <div id="webMusicPlayer_musicContent">
-            <button id="inAsang">上一曲</button>
-            <button id="theNextSang">下一曲</button>
-            <button id="suspended">暂停一下</button>
-            <button id="changeTheVolume">改变音量</button>
+        <div id="liebiao">
+            <div id="liebiao_gundong_div">
+
+            </div>
         </div>
-        
     </div>
+
+    <div id="boxingceshi"></div>
+    <button onclick="pxjiajian()" style="float: right; right: 0px;">加减</button>
+
 </body>
 
 </html>
+<!-- <div class="liebiao_neirong" data_item="1">
+    <img class="liebiao_cover" src="" alt="">
+    <div class="liebiao_name">
+        <p></p>
+    </div>
+    <div class="liebiao_artist">
+        <p></p>
+    </div>
+</div> -->
