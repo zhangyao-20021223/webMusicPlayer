@@ -22,16 +22,16 @@ document.getElementById("musicPlayerLyricBar").addEventListener('click', functio
     let L = document.getElementById('liebiao'); //L为列表的DOM
     let MH = M.offsetHeight; //获取整体面板的高度
     let LH = L.offsetHeight; //获取列表的高度
-    if (LH == 270) {
+    if (LH == 480) {
         //如果列表的高度是长的，是展开的，那么让列表设置为短的，收缩的
         L.style.height = "160px";
-        M.style.height = "270px";
+        M.style.height = "480px";
         MB.style.height = "134px";
-    } else if (MH == 270) {
+    } else if (MH == 480) {
         M.style.height = "160px";
         MB.style.height = "24px";
     } else if (LH == 160) {
-        M.style.height = "270px";
+        M.style.height = "480px";
         MB.style.height = "134px";
     }
 })
@@ -42,14 +42,14 @@ document.getElementById("button_liebiao").addEventListener('click', function() {
     let L = document.getElementById('liebiao');
     let MH = M.offsetHeight;
     let LH = L.offsetHeight;
-    if (MH == 270) {
+    if (MH == 480) {
         M.style.height = "160px";
         MB.style.height = "24px";
-        L.style.height = "270px";
-    } else if (LH == 270) {
+        L.style.height = "480px";
+    } else if (LH == 480) {
         L.style.height = "160px";
     } else if (MH == 160) {
-        L.style.height = "270px";
+        L.style.height = "480px";
     }
 })
 
@@ -65,7 +65,3 @@ function pxjiajian() {
 
 
 }
-
-
-
-
