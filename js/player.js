@@ -46,20 +46,23 @@ var liebiao_div_moban = '<div class="liebiao_neirong"><img class="liebiao_cover"
 
 function setUpFplayer(result) {
     let resultCode = JSON.parse(result.code);
-    if (resultCode == 1) {
+    if (resultCode == 1) { //检测json的code是否为1，不为1抛出错误，错误可以自定义 
         let rL = result.result.length;
         for (let i = 0; i < rL; i++) {
             liebiao_gundong_div_js.innerHTML += liebiao_div_moban;
-            console.log("ok");
+
+            // musicPlayerLyricBar_js.innerHTML += '<p class="musicPlayerLyricBar_content">' + lrcText + '</p>'
+
         }
         for (let i = 0; i < rL; i++) {
+            document.getElementsByClassName("liebiao_cover")[i].src = JSON.parse(xhr.responseText).result[i].cover;
+            document.getElementsByClassName("liebiao_name")[i].innerHTML = JSON.parse(xhr.responseText).result[i].name;
             // console.log(result.result[i]);
             // console.log(result.result[i].name);
             // console.log(result.result[i].artist);
+            // console.log("zhixing")
         }
-        // musicPlayerLyricBar_js.innerHTML += '<p class="musicPlayerLyricBar_content">' + lrcText + '</p>'
     } else {
         alert("哒咩哒咩~哒咩呦~哒咩那诺呦~");
     }
-
 }
