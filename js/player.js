@@ -41,15 +41,17 @@ var button_liebiao_js = document.getElementById("button_liebiao");
 var liebiao_gundong_div_js = document.getElementById("liebiao_gundong_div");
 var musicPlayerLyricBar_js = document.getElementById("musicPlayerLyricBar");
 var lrcText = String("string");
-var liebiao_div_moban = '<div class="liebiao_neirong"><img class="liebiao_cover" src="" alt=""><div class="liebiao_name"><p></p></div><div class="liebiao_artist"><p></p></div></div>'
+var liebiao_div_moban_a = '<div class="liebiao_neirong'
+var liebiao_div_moban_b = '"><img class="liebiao_cover" src="" alt=""><div class="liebiao_name"><p></p></div><div class="liebiao_artist"><p></p></div></div>'
+var liebiao_div_moban_in = ""
 
-
+//拉回xhr时的逻辑都写在这里
 function setUpFplayer(result) {
     let resultCode = JSON.parse(result.code);
     if (resultCode == 1) { //检测json的code是否为1，不为1抛出错误，错误可以自定义 
         let rL = result.result.length;
         for (let i = 0; i < rL; i++) {
-            liebiao_gundong_div_js.innerHTML += liebiao_div_moban;
+            liebiao_gundong_div_js.innerHTML += liebiao_div_moban_a + " liebiao_neirong_" + i + liebiao_div_moban_b;
 
             // musicPlayerLyricBar_js.innerHTML += '<p class="musicPlayerLyricBar_content">' + lrcText + '</p>'
 
@@ -57,10 +59,14 @@ function setUpFplayer(result) {
         for (let i = 0; i < rL; i++) {
             document.getElementsByClassName("liebiao_cover")[i].src = JSON.parse(xhr.responseText).result[i].cover;
             document.getElementsByClassName("liebiao_name")[i].innerHTML = JSON.parse(xhr.responseText).result[i].name;
-            // console.log(result.result[i]);
-            // console.log(result.result[i].name);
-            // console.log(result.result[i].artist);
-            // console.log("zhixing")
+            document.getElementsByClassName("liebiao_artist")[i].innerHTML = JSON.parse(xhr.responseText).result[i].artist;
+        }
+        for (let i = 0; i < rL; i++) {
+            let liebiao_neirong_$ = "liebiao_neirong_" + i;
+            document.getElementsByClassName(liebiao_neirong_$)[0].addEventListener('click', function() {
+                console.log(liebiao_neirong_$);
+
+            })
         }
     } else {
         alert("哒咩哒咩~哒咩呦~哒咩那诺呦~");

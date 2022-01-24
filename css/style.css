@@ -1,239 +1,271 @@
 * {
-  margin : 0;
-  padding : 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  /* background-color: #fff; */
-  position : relative;
-  width : 100vw;
-  height : 100vh;
-  background-color : rgba(255, 255, 255, .746);
-  display : flex;
-  justify-content : center;
-  /* align-items : center; */
+    /* background-color: #fff; */
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, .746);
+    display: flex;
+    justify-content: center;
+    /* align-items : center; */
 }
 
 #musicPlayerBeforeBar {
-  position : relative;
-  display : flex;
-  width : 300px;
-  height : 160px;
-  border-radius : 15px;
-  /* background: linear-gradient(to right, #68dcff, #02c4ff); */
-  /* background-color: #2c3e50a1; */
-  background-color : #302D5B;
-  /* transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1); */
-  transition : all 600ms cubic-bezier(.23, 1, .32, 1);
-  -webkit-animation-duration : 5s;
-  animation-duration : 5s;
+    position: relative;
+    display: flex;
+    width: 300px;
+    height: 160px;
+    border-radius: 15px;
+    /* background: linear-gradient(to right, #68dcff, #02c4ff); */
+    /* background-color: #2c3e50a1; */
+    background-color: #302D5B;
+    /* transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1); */
+    transition: all 600ms cubic-bezier(.23, 1, .32, 1);
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
 }
 
 #musicPlayerAllBar {
-  position : absolute;
-  z-index : 2;
-  display : block;
-  /* opacity: 0.1; */
-  width : 300px;
-  height : 160px;
-  border-radius : 15px;
-  /* background: linear-gradient(to right, #68dcff, #02c4ff); */
-  /* background-color: #2c3e50a1; */
-  background-color : #302D5B;
-  box-shadow : #302D5B 0 1px 10px;
-  /* transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1); */
-  transition : all 600ms cubic-bezier(.23, 1, .32, 1);
-  -webkit-animation-duration : 5s;
-  animation-duration : 5s;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    /* opacity: 0.1; */
+    width: 300px;
+    height: 160px;
+    border-radius: 15px;
+    /* background: linear-gradient(to right, #68dcff, #02c4ff); */
+    /* background-color: #2c3e50a1; */
+    background-color: #302D5B;
+    box-shadow: #302D5B 0 1px 10px;
+    /* transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1); */
+    transition: all 600ms cubic-bezier(.23, 1, .32, 1);
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
 }
 
 #musicPlayerImgBar {
-  position : absolute;
-  top : 12px;
-  left : 12px;
-  z-index : 2;
-  display : block;
-  width : 100px;
-  height : 100px;
-  border-radius : 15px;
-  background-color : rgb(255, 255, 255);
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
 }
 
 #musicPlayerImgBar_img {
-  width : 100%;
+    width: 100%;
 }
 
 #musicPlayerControlBar {
-  /* background-color: rgba(255, 255, 255, 0.329); */
-  position : absolute;
-  top : 12px;
-  right : 12px;
-  z-index : 2;
-  width : 160px;
-  height : 100px;
+    /* background-color: rgba(255, 255, 255, 0.329); */
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    width: 160px;
+    height: 100px;
 }
 
 #musicPlayerControlBar_1 {
-  width : 160px;
-  height : 60px;
+    width: 160px;
+    height: 60px;
 }
 
 #musicPlayerControlBar_information_name {
-  width : 100%;
-  height : 70%;
-  color : #FFFFFF;
-  font-weight : bold;
-  /* background-color: rgba(255, 255, 255, 0.144); */
-  font-size : 27px;
-  line-height : 40px;
+    width: 100%;
+    height: 70%;
+    color: #FFFFFF;
+    font-weight: bold;
+    /* background-color: rgba(255, 255, 255, 0.144); */
+    font-size: 27px;
+    line-height: 40px;
 }
 
 #musicPlayerControlBar_information_author {
-  width : 100%;
-  height : 30%;
-  color : #B0B0C2;
-  font-size : 9px;
-  /* background-color: rgba(255, 255, 255, 0.267); */
+    width: 100%;
+    height: 30%;
+    color: #B0B0C2;
+    font-size: 9px;
+    /* background-color: rgba(255, 255, 255, 0.267); */
 }
 
 #musicPlayerControlBar_2 {
-  float : left;
-  width : 40px;
-  height : 40px;
+    float: left;
+    width: 40px;
+    height: 40px;
 }
 
 #musicPlayerControlBar_3 {
-  float : left;
-  width : 40px;
-  height : 40px;
+    float: left;
+    width: 40px;
+    height: 40px;
 }
 
 #musicPlayerControlBar_4 {
-  float : left;
-  width : 40px;
-  height : 40px;
+    float: left;
+    width: 40px;
+    height: 40px;
 }
 
 #musicPlayerControlBar_5 {
-  float : left;
-  width : 40px;
-  height : 40px;
+    float: left;
+    width: 40px;
+    height: 40px;
 }
 
-#musicPlayerControlBar_2 > img {
-  width : 40px;
-  height : 40px;
-  transform : scale(.6);
+#musicPlayerControlBar_2>img {
+    width: 40px;
+    height: 40px;
+    transform: scale(.6);
 }
 
-#musicPlayerControlBar_3 > img {
-  width : 40px;
-  height : 40px;
+#musicPlayerControlBar_3>img {
+    width: 40px;
+    height: 40px;
 }
 
-#musicPlayerControlBar_4 > img {
-  width : 40px;
-  height : 40px;
-  transform : scale(.6) rotate(180deg);
+#musicPlayerControlBar_4>img {
+    width: 40px;
+    height: 40px;
+    transform: scale(.6) rotate(180deg);
 }
 
-#musicPlayerControlBar_5 > img {
-  width : 40px;
-  height : 40px;
-  transform : scale(.6);
+#musicPlayerControlBar_5>img {
+    width: 40px;
+    height: 40px;
+    transform: scale(.6);
 }
 
 #musicPlayerLyricBar {
-  position : absolute;
-  bottom : 12px;
-  left : 12px;
-  z-index : 2;
-  /* box-shadow: inset 0px 0px 1px yellow; */
-  overflow : hidden;
-  width : 300px;
-  height : 24px;
-  transition : all 600ms cubic-bezier(.23, 1, .32, 1);
-  transform : translateY(-0px);
-  -webkit-animation-duration : 5s;
-  animation-duration : 5s;
+    position: absolute;
+    bottom: 12px;
+    z-index: 1;
+    /* box-shadow: inset 0px 0px 1px yellow; */
+    overflow: hidden;
+    width: 100%;
+    height: 24px;
+    transition: all 600ms cubic-bezier(.23, 1, .32, 1);
+    transform: translateY(-0px);
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
+}
+
+#musicPlayerLyricBarButton {
+    content: '词';
+    width: 30px;
+    height: 30px;
+    background-colosr: #FFFFFF;
+    position: absolute;
+    border-radius: 50%;
+    right: 0px;
+    bottom: 0px;
 }
 
 .musicPlayerLyricBar_content {
-  display : block;
-  float : left;
-  margin-bottom : 12px;
-  width : 100%;
-  height : 24px;
-  color : #FFFFFF;
-  font-size : 18px;
-  transition : all 600ms cubic-bezier(.23, 1, .32, 1);
-  /* box-shadow: inset 0px 0px 1px black; */
-  transform : translateY(0px);
-  -webkit-animation-duration : 5s;
-  animation-duration : 5s;
-  -webkit-user-select : none;
-  -moz-user-select : none;
-  -ms-user-select : none;
-  user-select : none;
+    display: block;
+    float: left;
+    margin-bottom: 12px;
+    width: 300px;
+    height: 24px;
+    color: #FFFFFF;
+    font-size: 18px;
+    transition: all 600ms cubic-bezier(.23, 1, .32, 1);
+    /* box-shadow: inset 0px 0px 1px black; */
+    transform: translateY(0px);
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-left: 12px;
+    padding-right: 12px;
+    box-sizing: border-box;
 }
 
 #liebiao {
-  position : absolute;
-  z-index : 1;
-  overflow : hidden;
-  width : 300px;
-  height : 160px;
-  border-radius : 15px;
-  background-color : #302D5B;
-  transition : all 600ms cubic-bezier(.23, 1, .32, 1);
-  /*box-shadow: inset 0px 0px 10px rgb(54, 39, 99);*/
-  -webkit-animation-duration : 5s;
-  animation-duration : 5s;
+    position: absolute;
+    z-index: 0;
+    overflow: hidden;
+    width: 300px;
+    height: 160px;
+    border-radius: 15px;
+    background-color: #302D5B;
+    transition: all 600ms cubic-bezier(.23, 1, .32, 1);
+    /*box-shadow: inset 0px 0px 10px rgb(54, 39, 99);*/
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
 }
 
 #liebiao_gundong_div {
-  display : block;
-  /* background-color: #fff; */
-  overflow : auto;
-  margin-top : 160px;
-  width : 300px;
-  height : 320px;
+    display: block;
+    /* background-color: #fff; */
+    overflow: auto;
+    margin-top: 160px;
+    width: 300px;
+    height: 320px;
 }
 
 #liebiao_gundong_div::-webkit-scrollbar {
-  display : none;
+    -ms-overflow-style: none;
+    display: none;
 }
 
 .liebiao_neirong {
-  display : block;
-  float : left;
-  padding-left : 12px;
-  width : 300px;
-  height : 60px;
-  background : linear-gradient(145deg, #5D73D4, #775AD4);
-  box-shadow : inset 0 0 1px black;
-  color : #FFFFFF;
-  font-size : 20px;
+    display: block;
+    float: left;
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 300px;
+    height: 60px;
+    background: linear-gradient(145deg, #5D73D4, #775AD4);
+    box-shadow: inset 0 0 1px black;
+    color: #FFFFFF;
+    font-size: 20px;
+    box-sizing: border-box;
 }
 
 .liebiao_cover {
-  position : relative;
-  top : 2.5px;
-  float : left;
-  width : 55px;
-  height : 55px;
-  border-radius : 25%;
-  box-shadow : inset 0 0 1px white;
+    position: relative;
+    top: 2.5px;
+    float: left;
+    width: 55px;
+    height: 55px;
+    border-radius: 25%;
+    box-shadow: inset 0 0 1px white;
 }
 
 .liebiao_name {
-  position : relative;
-  top : 2.5px;
-  float : left;
-  overflow : hidden;
-  margin-left : 10px;
-  width : 100px;
-  height : 55px;
-  font-size : 15px;
-  line-height : 25px;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin-left: 10px;
+    width: 200px;
+    height: 30px;
+    font-size: 15px;
+    line-height: 30px;
+    background-color: rgb(143, 62, 62);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.liebiao_artist {
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin-left: 10px;
+    width: 200px;
+    height: 30px;
+    font-size: 15px;
+    line-height: 30px;
+    background-color: #5D73D4;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

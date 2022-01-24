@@ -34,6 +34,7 @@ document.getElementById("musicPlayerLyricBar").addEventListener('click', functio
         M.style.height = "480px";
         MB.style.height = "134px";
     }
+
 })
 
 document.getElementById("button_liebiao").addEventListener('click', function() {
@@ -51,6 +52,7 @@ document.getElementById("button_liebiao").addEventListener('click', function() {
     } else if (MH == 160) {
         L.style.height = "480px";
     }
+
 })
 
 gecichangdu = 0;
