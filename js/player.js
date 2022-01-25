@@ -64,11 +64,29 @@ function setUpFplayer(result) {
         for (let i = 0; i < rL; i++) {
             let liebiao_neirong_$ = "liebiao_neirong_" + i;
             document.getElementsByClassName(liebiao_neirong_$)[0].addEventListener('click', function() {
-                console.log(liebiao_neirong_$);
-
+                FPlayer_Audio_bofang(liebiao_neirong_$);
             })
         }
     } else {
         alert("哒咩哒咩~哒咩呦~哒咩那诺呦~");
     }
 }
+
+
+button_zanting_js.addEventListener('click', function() {
+    console.log("暂停");
+})
+
+function FPlayer_Audio_bofang(content) {
+    let FPlayer_Audio_num = content.slice(16);
+    let FPlayer_Audio_src = JSON.parse(xhr.responseText).result[FPlayer_Audio_num].url;
+    // console.log(xhr);
+    let FPlayer_Audio = new Audio(FPlayer_Audio_src);
+    FPlayer_Audio.play();
+}
+
+function FPlayer_Audio_zanting() {}
+
+function FPlayer_Audio_qianjin() {}
+
+function FPlayer_Audio_houtui() {}
