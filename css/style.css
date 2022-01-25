@@ -161,7 +161,7 @@ body {
     content: '词';
     width: 30px;
     height: 30px;
-    background-colosr: #FFFFFF;
+    /* background-colosr: #FFFFFF; */
     position: absolute;
     border-radius: 50%;
     right: 0px;

@@ -78,6 +78,7 @@ button_zanting_js.addEventListener('click', function() {
 })
 
 function FPlayer_Audio_bofang(content) {
+    FPlayer_Audio.pause();
     let FPlayer_Audio_num = content.slice(16);
     let FPlayer_Audio_src = JSON.parse(xhr.responseText).result[FPlayer_Audio_num].url;
     // console.log(xhr);
@@ -90,3 +91,19 @@ function FPlayer_Audio_zanting() {}
 function FPlayer_Audio_qianjin() {}
 
 function FPlayer_Audio_houtui() {}
+
+var FPlayer_Audio_flag_ = 0;
+//0为关闭，1为开启
+function FPlayer_Audio_flag(flag) {
+    let a = FPlayer_Audio_flag_;
+    if (a == 0) {
+        a = 1;
+    } else {
+        a = 0;
+    }
+    FPlayer_Audio_flag_ = a;
+}
+
+function vjkbkjbkj() {
+    console.log(FPlayer_Audio_flag_);
+}
