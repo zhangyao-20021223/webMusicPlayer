@@ -86,6 +86,9 @@ body {
     /* background-color: rgba(255, 255, 255, 0.144); */
     font-size: 27px;
     line-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #musicPlayerControlBar_information_author {
@@ -94,6 +97,9 @@ body {
     color: #B0B0C2;
     font-size: 9px;
     /* background-color: rgba(255, 255, 255, 0.267); */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #musicPlayerControlBar_2 {
