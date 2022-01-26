@@ -94,7 +94,7 @@ function FPlayer_Audio_houtui() {}
 
 var FPlayer_Audio_flag_ = 0;
 //0为关闭，1为开启
-function FPlayer_Audio_flag(flag) {
+function FPlayer_Audio_flag(content) {
     let a = FPlayer_Audio_flag_;
     if (a == 0) {
         a = 1;
@@ -106,4 +106,5 @@ function FPlayer_Audio_flag(flag) {
 
 function vjkbkjbkj() {
     console.log(FPlayer_Audio_flag_);
+
 }
