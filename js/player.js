@@ -156,6 +156,7 @@ function FPlayer_Audio_bofang(content) {
     musicPlayerControlBar_information_name_js.innerHTML = document.getElementsByClassName(content)[0].getElementsByClassName("liebiao_name")[0].innerText;
     musicPlayerControlBar_information_author_js.innerHTML = document.getElementsByClassName(content)[0].getElementsByClassName("liebiao_artist")[0].innerText;
     musicPlayerImgBar_img_js.src = document.getElementsByClassName(content)[0].getElementsByClassName("liebiao_cover")[0].src;
+    document.getElementById("musicPlayerAllBar").fplayer_content = content;
     FPlayer_Audio_core(content);
     // console.log(content);
 
@@ -182,10 +183,26 @@ button_qianjin_js.addEventListener("click", function() {
         if (FPlayer_Audio.src == "") {
             console.log("还没有选择歌曲");
         } else if (FPlayer_Audio.src != "") {
-            FPlayer_Audio_core()
+            FPlayer_Audio_core(null, "qianjin");
         }
     } else if (FPlayer_Audio_flag_ == 1) {
         FPlayer_Audio.pause();
+        FPlayer_Audio_flag_ = 0;
+        FPlayer_Audio_core(null, "qianjin");
+
+    }
+})
+button_houtui_js.addEventListener("click", function() {
+    if (FPlayer_Audio_flag_ == 0) {
+        if (FPlayer_Audio.src == "") {
+            console.log("还没有选择歌曲");
+        } else if (FPlayer_Audio.src != "") {
+            FPlayer_Audio_core(null, "houtui");
+        }
+    } else if (FPlayer_Audio_flag_ == 1) {
+        FPlayer_Audio.pause();
+        FPlayer_Audio_flag_ = 0;
+        FPlayer_Audio_core(content, "houtui");
 
     }
 })
@@ -202,18 +219,27 @@ function FPlayer_Audio_flag(content) {
     FPlayer_Audio_flag_ = a;
 }
 
-function vjkbkjbkj() {
-    console.log(FPlayer_Audio_flag_);
-
-}
-
-
-
-
-function FPlayer_Audio_core(content) {
+function FPlayer_Audio_core(content, type) {
     //播放器逻辑为，开启默认flag为0，所有的有播放音乐的function都会调用核心，核心会检测flag，flag为0接收url，执行FPlayer_Audio.play(),flag为1，执行FPlayer_Audio.
+    content = document.getElementById("musicPlayerAllBar").fplayer_content;
+    switch (type) {
+        case "qianjin":
+            console.log("qianjin");
+            FPlayer_Audio_core_qianjin(content, "");
+            FPlayer_Audio_bofang(content);
+            break;
+        case "houtui":
+            console.log("houtui");
+            FPlayer_Audio_core_houtui(content, "");
+            FPlayer_Audio_bofang(content);
+            break;
+        default:
+            break;
+    }
+
     if (FPlayer_Audio_flag_ == 0) {
         let FPlayer_Audio_num = content.slice(16);
+        console.log(content);
         let FPlayer_Audio_src = JSON.parse(xhr.responseText).result[FPlayer_Audio_num].url;
         FPlayer_Audio.src = FPlayer_Audio_src;
         FPlayer_Audio.play();
@@ -222,8 +248,14 @@ function FPlayer_Audio_core(content) {
         FPlayer_Audio.pause();
         FPlayer_Audio_flag_ = 0;
         FPlayer_Audio_bofang(content);
-        // console.log(content);
     }
 
+    function FPlayer_Audio_core_qianjin(content, type) {
+        content = content.slice(0, 16) + content.slice(16) + 1;
+    }
+
+    function FPlayer_Audio_core_houtui(content, type) {
+        content = content.slice(0, 16) + content.slice(16) - 1;
+    }
 
 }
