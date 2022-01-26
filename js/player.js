@@ -78,7 +78,7 @@ button_zanting_js.addEventListener('click', function() {
 })
 
 function FPlayer_Audio_bofang(content) {
-    FPlayer_Audio.pause();
+    // FPlayer_Audio.pause();
     let FPlayer_Audio_num = content.slice(16);
     let FPlayer_Audio_src = JSON.parse(xhr.responseText).result[FPlayer_Audio_num].url;
     // console.log(xhr);
@@ -106,5 +106,10 @@ function FPlayer_Audio_flag(content) {
 
 function vjkbkjbkj() {
     console.log(FPlayer_Audio_flag_);
+
+}
+
+
+function FPlayer_Audio_core() {
 
 }
