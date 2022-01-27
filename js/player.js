@@ -81,7 +81,7 @@ xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
         if ((xhr.status >= 200 && xhr.status < 300) || (xhr.status == 304)) {
             var result = JSON.parse(xhr.responseText);
-            (result);
+            setUpFplayer(result);
         } else {
             alert("播放器加载失败");
         }
@@ -117,11 +117,19 @@ function setUpFplayer(result) {
         let liebiao_neirong_$ = "liebiao_neirong_" + i;
         document.getElementsByClassName(liebiao_neirong_$)[0].addEventListener('click', function() {
             FPlayer_Audio_bofang(liebiao_neirong_$);
+            var FPlayer_Audio_Play = liebiao_neirong_$.slice(16);
         })
     }
-    button_qianjin_js.addEventListener("click", function() {
-
-    })
+    //0为关闭，1为开启
+    function FPlayer_Audio_flag(content) {
+        let a = FPlayer_Audio_flag_;
+        if (a == 0) {
+            a = 1;
+        } else {
+            a = 0;
+        }
+        FPlayer_Audio_flag_ = a;
+    }
 
 
     function FPlayer_Audio_bofang(content) {
@@ -130,6 +138,10 @@ function setUpFplayer(result) {
         musicPlayerImgBar_img_js.src = document.getElementsByClassName(content)[0].getElementsByClassName("liebiao_cover")[0].src;
         FPlayer_Audio_core(content);
     }
+
+    button_qianjin_js.addEventListener("click", function() {
+
+    })
 
     button_zanting_js.addEventListener('click', function() {
         // console.log("暂停");
@@ -146,17 +158,6 @@ function setUpFplayer(result) {
         }
     })
 
-    //0为关闭，1为开启
-    function FPlayer_Audio_flag(content) {
-        let a = FPlayer_Audio_flag_;
-        if (a == 0) {
-            a = 1;
-        } else {
-            a = 0;
-        }
-        FPlayer_Audio_flag_ = a;
-    }
-
     function FPlayer_Audio_core(content) {
         //播放器逻辑为，开启默认flag为0，所有的有播放音乐的function都会调用核心，核心会检测flag，flag为0接收url，执行FPlayer_Audio.play(),flag为1，执行FPlayer_Audio.
         if (FPlayer_Audio_flag_ == 0) {
@@ -170,6 +171,5 @@ function setUpFplayer(result) {
             FPlayer_Audio_flag_ = 0;
             FPlayer_Audio_bofang(content);
         }
-
     }
 }
