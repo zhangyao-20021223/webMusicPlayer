@@ -33,45 +33,7 @@ for (let i = 0; i < a.length; i++) {
     })
 }
 
-//监听歌词面板，点击的是歌词面板，所以监听歌词面板
-document.getElementById("musicPlayerLyricBar").addEventListener('click', function() {
-    let MB = document.getElementById("musicPlayerLyricBar"); //MB为歌词面板的DOM
-    let M = document.getElementById('musicPlayerAllBar'); //M为整体面板的DOM
-    let L = document.getElementById('liebiao'); //L为列表的DOM
-    let MH = M.offsetHeight; //获取整体面板的高度
-    let LH = L.offsetHeight; //获取列表的高度
-    if (LH == 480) {
-        //如果列表的高度是长的，是展开的，那么让列表设置为短的，收缩的
-        L.style.height = "160px";
-        M.style.height = "480px";
-        MB.style.height = "134px";
-    } else if (MH == 480) {
-        M.style.height = "160px";
-        MB.style.height = "24px";
-    } else if (LH == 160) {
-        M.style.height = "480px";
-        MB.style.height = "134px";
-    }
 
-})
-
-document.getElementById("button_liebiao").addEventListener('click', function() {
-    let MB = document.getElementById("musicPlayerLyricBar");
-    let M = document.getElementById('musicPlayerAllBar');
-    let L = document.getElementById('liebiao');
-    let MH = M.offsetHeight;
-    let LH = L.offsetHeight;
-    if (MH == 480) {
-        M.style.height = "160px";
-        MB.style.height = "24px";
-        L.style.height = "480px";
-    } else if (LH == 480) {
-        L.style.height = "160px";
-    } else if (MH == 160) {
-        L.style.height = "480px";
-    }
-
-})
 
 var xhr = new XMLHttpRequest;
 // xhr.open("GET", "https://zk-nhbook.osdn.io/getMusic.php");
@@ -112,12 +74,12 @@ function setUpFplayer(result) {
         document.getElementsByClassName("liebiao_cover")[i].src = result.result[i].cover;
         document.getElementsByClassName("liebiao_name")[i].innerHTML = result.result[i].name;
         document.getElementsByClassName("liebiao_artist")[i].innerHTML = result.result[i].artist;
+
     }
     for (let i = 0; i < rL; i++) {
         let liebiao_neirong_$ = "liebiao_neirong_" + i;
         document.getElementsByClassName(liebiao_neirong_$)[0].addEventListener('click', function() {
-            FPlayer_Audio_bofang(liebiao_neirong_$);
-            var FPlayer_Audio_Play = liebiao_neirong_$.slice(16);
+            FPlayer_Audio_bofang(liebiao_neirong_$, null, null);
         })
     }
     //0为关闭，1为开启
@@ -140,7 +102,7 @@ function setUpFplayer(result) {
     }
 
     button_qianjin_js.addEventListener("click", function() {
-
+        console.log(FPlayer_Audio_Play)
     })
 
     button_zanting_js.addEventListener('click', function() {
