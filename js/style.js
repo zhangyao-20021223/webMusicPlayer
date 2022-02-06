@@ -1,10 +1,10 @@
-var FPlayer_bar_js = document.getElementById("musicPlayerBeforeBar"); //FPlayer整体的js
-var musicPlayerAllBar_js = document.getElementById("musicPlayerAllBar"); //控制面板的js
-var musicPlayerLyricBar_js = document.getElementById("musicPlayerLyricBar"); //歌词按钮的js && 歌词整体的js
-var musicPlayerListBar_js = document.getElementById("musicPlayerListBar"); //列表整体的js
-var musicPlayerLyricBar_gundong_div = document.getElementById("musicPlayerLyricBar_gundong_div"); //歌词显示面板的js
-var button_liebiao_js = document.getElementsByClassName("button_liebiao"); //列表的按钮的js
-var huandong = "transition: all 600ms cubic-bezier(.23, 1, .32, 1);animation-duration: 5s;"
+var FPlayer_bar_js = document.getElementById("FPAll"); //FPlayer整体的js
+var musicPlayerAllBar_js = document.getElementById("FPControlBar"); //控制面板的js
+var FPLyricBar_js = document.getElementById("FPLyricBar"); //歌词按钮的js && 歌词整体的js
+var FPListBar_js = document.getElementById("FPListBar"); //列表整体的js
+var FPLyricBar_in_bar = document.getElementById("FPLyricBar_in_bar"); //歌词显示面板的js
+var button_list_js = document.getElementsByClassName("button_list"); //列表的按钮的js
+var Animation = "transition: all 600ms cubic-bezier(.23, 1, .32, 1);animation-duration: 5s;"
     //交互上的逻辑为：
     //       列表面板：
     //              列表按钮触发列表到最顶层，期间涉及到z-index的调整，如果对页面有影响可以自行更改
@@ -19,29 +19,29 @@ var huandong = "transition: all 600ms cubic-bezier(.23, 1, .32, 1);animation-dur
 
 
 var musicPlayerLyricBarFlag = false;
-musicPlayerLyricBar_gundong_div.addEventListener("click", function() {
+FPLyricBar_in_bar.addEventListener("click", function() {
     if (musicPlayerLyricBarFlag == false) {
-        musicPlayerLyricBar_js.style.cssText = "width: 100%;height:100%";
-        this.style.cssText = "width:100%;height:100%;overflow: scroll;" + huandong;
+        FPLyricBar_js.style.cssText = "width: 100%;height:100%";
+        this.style.cssText = "width:100%;height:100%;overflow: scroll;" + Animation;
         musicPlayerLyricBarFlag = true;
     } else if (musicPlayerLyricBarFlag == true) {
-        musicPlayerLyricBar_js.style.cssText = "width: 100%;height:27%";
-        this.style.cssText = "width:90%;height:80%;margin-left:5%;" + huandong;
+        FPLyricBar_js.style.cssText = "width: 100%;height:27%";
+        this.style.cssText = "width:90%;height:80%;margin-left:5%;" + Animation;
         musicPlayerLyricBarFlag = false;
     }
 })
 
 var musicPlayerListBarFlag = false;
-button_liebiao_js[0].addEventListener('click', function() {
+button_list_js[0].addEventListener('click', function() {
     if (musicPlayerListBarFlag == false) {
-        musicPlayerListBar_js.style.cssText = "z-index: 1;transform: translateY(0px);" + huandong;
+        FPListBar_js.style.cssText = "z-index: 1;transform: translateY(0px);" + Animation;
         musicPlayerListBarFlag = true;
     }
 
 })
-musicPlayerListBar_js.addEventListener('click', function() {
+FPListBar_js.addEventListener('click', function() {
     if (musicPlayerListBarFlag == true) {
-        musicPlayerListBar_js.style.cssText = "z-index:1;transform: translateY(160px);" + huandong
+        FPListBar_js.style.cssText = "z-index:1;transform: translateY(160px);" + Animation
         musicPlayerListBarFlag = false;
     }
 })

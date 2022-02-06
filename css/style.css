@@ -18,7 +18,7 @@
     /* transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1); */
 }
 
-.FPlayer_huandong {
+.FPlayer_Animation {
     transition: all 600ms cubic-bezier(.23, 1, .32, 1);
     animation-duration: 5s;
 }
@@ -29,7 +29,7 @@
 
 /* musicPlayerBeforeBar star */
 
-#musicPlayerBeforeBar {
+#FPAll {
     width: 300px;
     height: 160px;
     /* border: solid 1px black; */
@@ -47,9 +47,9 @@
 /* musicPlayerBeforeBar over */
 
 
-/* musicPlayerAllbar star */
+/* 控制面板 star */
 
-#musicPlayerAllBar {
+#FPControlBar {
     width: 100%;
     height: 73%;
     background-color: rgb(70, 46, 124);
@@ -57,33 +57,33 @@
     z-index: 1;
 }
 
-#musicPlayerImgBar {
+#FPImgBar {
     width: 40%;
     height: 100%;
     float: left;
 }
 
-#musicPlayerImgBar img {
+#FPImgBar img {
     width: 90%;
     height: 90%;
     float: left;
     padding: 5%;
 }
 
-#musicPlayerControlBarAll {
+#FPButtonBarAll {
     width: 60%;
     height: 100%;
     float: right;
     position: relative;
 }
 
-#musicPlayerControlBar {
+#FPArtistBar {
     width: 100%;
     height: 60%;
     float: left;
 }
 
-#musicPlayerControlBar p:nth-child(1) {
+#FPArtistBar p:nth-child(1) {
     width: 100%;
     height: 65%;
     display: block;
@@ -92,7 +92,7 @@
     margin-left: 6%;
 }
 
-#musicPlayerControlBar p:nth-child(2) {
+#FPArtistBar p:nth-child(2) {
     width: 100%;
     height: 35%;
     display: block;
@@ -101,32 +101,32 @@
     margin-left: 6%;
 }
 
-.musicPlayerConrtolBar {
+.FPControlButton {
     width: 25%;
     height: 30%;
     float: left;
 }
 
-.musicPlayerConrtolBar img {
+.FPControlButton img {
     width: 100%;
     height: 100%;
 }
 
-.button_houtui {
-    transform: rotate(180deg);
+.button_back {
+    transform: rotateY(180deg);
 }
 
-.button_liebiao {
+.button_list {
     transform: scale(.9);
 }
 
 
-/* musicPlayerAllBar over */
+/* 控制面板 over */
 
 
-/* musicPlayerLyricBar star */
+/* 歌词 star */
 
-#musicPlayerLyricBar {
+#FPLyricBar {
     width: 100%;
     height: 27%;
     background-color: rgb(88, 67, 139);
@@ -135,7 +135,7 @@
     z-index: 1;
 }
 
-#musicPlayerLyricBar_gundong_div {
+#FPLyricBar_in_bar {
     width: 100%;
     height: 100%;
     color: white;
@@ -144,7 +144,7 @@
     overflow: hidden;
 }
 
-#musicPlayerLyricBar_gundong_div::-webkit-scrollbar {
+#FPLyricBar_in_bar::-webkit-scrollbar {
     display: none;
 }
 
@@ -156,30 +156,78 @@
 }
 
 
-/* musicPlayerLyricBar over */
+/* 歌词 over */
 
 
-/* musicPlayerListBar star */
+/* 列表 star */
 
-#musicPlayerListBar {
+#FPListBar {
     width: 100%;
     height: 100%;
     background-color: rgb(70, 46, 124);
     position: absolute;
-    z-index: 0px;
+    z-index: 0;
     transform: translateY(160px);
+    overflow: scroll;
+    padding-top: 2px;
 }
 
-#liebiao_gundong_div {
+#FPListBar_in_bar {
     width: 100%;
+    height: auto;
+    overflow: hidden;
+    /*margin-top: 1px;*/
+}
+#FPListBar::-webkit-scrollbar{
+    display: none;
+}
+
+.FPlayerListContents{
+    width: 48%;
+    height: 48%;
+    margin: 1%;
+    background-color: rgb(123 89 181);
+    border-radius: 12px;
+    display: block;
+    float: left;
+    position: relative;
+    box-shadow: 0px 0px 4px black ;
+    position: relative;
+}
+.FPlayerListContent_img{
+    width: 50%;
     height: 100%;
-    text-align: center;
+    /*background-color: #fff;*/
+    /*position: absolute;*/
+    float: left;
+    border-radius: 10%;
+    background-color: #fff;
+    box-shadow: 4px 0px 1px #3b104c;
 }
-
-.FPlayer_liebiao {
-    color: white;
+.FPlayerListContent_p1{
+    position: relative;
+    display: block;
+    width: 48%;
+    height: 100%;
+    /*background-color: #470d0d;*/
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
     font-size: 20px;
+    color: white;
+
+}
+.FPlayerListContent_p2{
+    position: relative;
+    display: block;
+    width: 48%;
+    height: 100%;
+    /*background-color: #470d0d;*/
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 20px;
+    color: white;
 }
 
-
-/* musicPlayerListBar over */
+/* 列表 over */

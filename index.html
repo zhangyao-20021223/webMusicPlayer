@@ -2,9 +2,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>音乐播放器</title>
+    <title>FPlayer</title>
 
     <script defer src="js/player.js"></script>
     <script defer src="js/style.js"></script>
@@ -13,34 +11,36 @@
 </head>
 
 <body>
-    <div id="musicPlayerBeforeBar">
-        <div id="musicPlayerAllBar">
-            <div id="musicPlayerImgBar"><img id="musicPlayerImgBar_img" src="./svg/jiaopian.svg" alt="#"></div>
-            <div id="musicPlayerControlBarAll">
-                <div id="musicPlayerControlBar">
-                    <p id="musicPlayerControlBar_information_name">未知</p>
-                    <p id="musicPlayerControlBar_information_author">未知</p>
-                </div>
-                <div class="musicPlayerConrtolBar"><img class="button_qianjin" src="./svg/previous.svg" type="image/svg+xml">
-                </div>
-                <div class="musicPlayerConrtolBar"><img class="button_zanting" src="./svg/zanting.svg" type="image/svg+xml">
-                </div>
-                <div class="musicPlayerConrtolBar"><img class="button_houtui" src="./svg/previous.svg" type="image/svg+xml">
-                </div>
-                <div class="musicPlayerConrtolBar"><img class="button_liebiao" src="./svg/liebiao.svg" type="image/svg+xml">
-                </div>
+<div id="FPAll">
+    <div id="FPControlBar">
+        <div id="FPImgBar"><img src="./svg/jiaopian.svg" alt="#"></div>
+        <div id="FPButtonBarAll">
+            <div id="FPArtistBar">
+                <p id="FPMusicName">未知</p>
+                <p id="FPArtistName">未知</p>
             </div>
-        </div>
-        <div class="FPlayer_huandong" id="musicPlayerLyricBar">
-            <div id="musicPlayerLyricBar_gundong_div">
+            <div class="FPControlButton"><img class="button_go" src="./svg/previous.svg" type="image/svg+xml">
             </div>
-        </div>
-        <div id="musicPlayerListBar">
-            <div id="liebiao_gundong_div">//class="FPlayer_liebiao"
+            <div class="FPControlButton"><img class="button_pause" src="./svg/zanting.svg" type="image/svg+xml">
+            </div>
+            <div class="FPControlButton"><img class="button_back" src="./svg/previous.svg" type="image/svg+xml">
+            </div>
+            <div class="FPControlButton"><img class="button_list" src="./svg/liebiao.svg" type="image/svg+xml">
             </div>
         </div>
     </div>
-    <!-- <audio src=""></audio> -->
+    <div class="FPlayer_Animation" id="FPLyricBar">
+        <div id="FPLyricBar_in_bar">
+        </div>
+    </div>
+    <div id="FPListBar">
+        <div id="FPListBar_in_bar">
+
+        </div>
+    </div>
+</div>
+
+<!-- <audio src=""></audio> -->
 </body>
 
 </html>
