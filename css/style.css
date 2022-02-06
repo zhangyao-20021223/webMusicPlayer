@@ -1,261 +1,124 @@
+/* All star */
+
 * {
-    margin: 0;
-    padding: 0;
+    padding: 0px;
+    margin: 0px;
 }
 
-body {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
+/* All over */
+
+
+/* musicPlayerBeforeBar star */
 
 #musicPlayerBeforeBar {
-    position: absolute;
     width: 300px;
     height: 160px;
+    /* border: solid 1px black; */
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    /* padding: 12px; */
+    /* box-sizing: border-box; */
 }
 
+
+/* musicPlayerBeforeBar over */
+
+
+/* musicPlayerAllbar star */
+
 #musicPlayerAllBar {
+    width: 100%;
+    height: 73%;
+    background-color: rgb(70, 46, 124);
     position: absolute;
     z-index: 1;
-    display: block;
-    width: 300px;
-    height: 160px;
-    border-radius: 15px;
-    background-color: #302D5B;
-    box-shadow: #302D5B 0 1px 10px;
 }
 
 #musicPlayerImgBar {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    z-index: 2;
-    display: block;
-    width: 100px;
-    height: 100px;
-    border-radius: 15px;
-    /* border: inset 5px #B0B0C2; */
-    /* box-shadow: 0px 0px 8px #7761c9; */
-    background-color: rgb(49, 43, 102);
-    overflow: hidden;
+    width: 40%;
+    height: 100%;
+    float: left;
 }
 
-#musicPlayerImgBar_img {
-    width: 100%;
+#musicPlayerImgBar img {
+    width: 90%;
+    height: 90%;
+    float: left;
+    padding: 5%;
+}
+
+#musicPlayerControlBarAll {
+    width: 60%;
+    height: 100%;
+    float: right;
+    position: relative;
 }
 
 #musicPlayerControlBar {
-    /* background-color: rgba(255, 255, 255, 0.329); */
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    z-index: 2;
-    width: 160px;
-    height: 100px;
-}
-
-#musicPlayerControlBar_1 {
-    width: 160px;
-    height: 60px;
-}
-
-#musicPlayerControlBar_information_name {
     width: 100%;
-    height: 70%;
-    color: #FFFFFF;
-    font-weight: bold;
-    /* background-color: rgba(255, 255, 255, 0.144); */
-    font-size: 27px;
-    line-height: 40px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    height: 60%;
+    float: left;
 }
 
-#musicPlayerControlBar_information_author {
+#musicPlayerControlBar p:nth-child(1) {
     width: 100%;
+    height: 65%;
+    display: block;
+    color: white;
+    font-size: 30px;
+    margin-left: 6%;
+}
+
+#musicPlayerControlBar p:nth-child(2) {
+    width: 100%;
+    height: 35%;
+    display: block;
+    color: white;
+    font-size: 15px;
+    margin-left: 6%;
+}
+
+.musicPlayerConrtolBar {
+    width: 25%;
     height: 30%;
-    color: #B0B0C2;
-    font-size: 9px;
-    /* background-color: rgba(255, 255, 255, 0.267); */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-#musicPlayerControlBar_2 {
     float: left;
-    width: 40px;
-    height: 40px;
 }
 
-#musicPlayerControlBar_3 {
-    float: left;
-    width: 40px;
-    height: 40px;
+.musicPlayerConrtolBar img {
+    width: 100%;
+    height: 100%;
 }
 
-#musicPlayerControlBar_4 {
-    float: left;
-    width: 40px;
-    height: 40px;
-}
 
-#musicPlayerControlBar_5 {
-    float: left;
-    width: 40px;
-    height: 40px;
-}
+/* musicPlayerAllBar over */
 
-#musicPlayerControlBar_2>img {
-    width: 40px;
-    height: 40px;
-    transform: scale(.6);
-}
 
-#musicPlayerControlBar_3>img {
-    width: 40px;
-    height: 40px;
-}
-
-#musicPlayerControlBar_4>img {
-    width: 40px;
-    height: 40px;
-    transform: scale(.6) rotate(180deg);
-}
-
-#musicPlayerControlBar_5>img {
-    width: 40px;
-    height: 40px;
-    transform: scale(.6);
-}
+/* musicPlayerLyricBar star */
 
 #musicPlayerLyricBar {
-    position: absolute;
-    bottom: 12px;
-    z-index: 1;
-    /* box-shadow: inset 0px 0px 1px yellow; */
-    overflow: hidden;
     width: 100%;
-    height: 24px;
-    transition: all 600ms cubic-bezier(.23, 1, .32, 1);
-    transform: translateY(-0px);
-    -webkit-animation-duration: 5s;
-    animation-duration: 5s;
-}
-
-#musicPlayerLyricBarButton {
-    content: '词';
-    width: 30px;
-    height: 30px;
-    /* background-colosr: #FFFFFF; */
+    height: 27%;
+    background-color: rgb(88, 67, 139);
     position: absolute;
-    border-radius: 50%;
-    right: 0px;
     bottom: 0px;
+    z-index: 1;
 }
 
-.musicPlayerLyricBar_content {
-    display: block;
-    float: left;
-    margin-bottom: 12px;
-    width: 300px;
-    height: 24px;
-    color: #FFFFFF;
-    font-size: 18px;
-    transition: all 600ms cubic-bezier(.23, 1, .32, 1);
-    /* box-shadow: inset 0px 0px 1px black; */
-    transform: translateY(0px);
-    -webkit-animation-duration: 5s;
-    animation-duration: 5s;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    padding-left: 12px;
-    padding-right: 12px;
-    box-sizing: border-box;
-}
 
-#liebiao {
+/* musicPlayerLyricBar over */
+
+
+/* musicPlayerListBar star */
+
+#musicPlayerListBar {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(76, 102, 187);
     position: absolute;
-    z-index: 0;
-    overflow: hidden;
-    width: 300px;
-    height: 160px;
-    border-radius: 15px;
-    background-color: #302D5B;
-    transition: all 600ms cubic-bezier(.23, 1, .32, 1);
-    /*box-shadow: inset 0px 0px 10px rgb(54, 39, 99);*/
-    -webkit-animation-duration: 5s;
-    animation-duration: 5s;
+    z-index: 0px;
 }
 
-#liebiao_gundong_div {
-    display: block;
-    /* background-color: #fff; */
-    overflow: auto;
-    margin-top: 160px;
-    width: 300px;
-    height: 320px;
-}
 
-#liebiao_gundong_div::-webkit-scrollbar {
-    -ms-overflow-style: none;
-    display: none;
-}
-
-.liebiao_neirong {
-    display: block;
-    float: left;
-    padding-left: 12px;
-    padding-right: 12px;
-    width: 300px;
-    height: 60px;
-    background: linear-gradient(145deg, #5D73D4, #775AD4);
-    box-shadow: inset 0 0 1px black;
-    color: #FFFFFF;
-    font-size: 20px;
-    box-sizing: border-box;
-}
-
-.liebiao_cover {
-    position: relative;
-    top: 2.5px;
-    float: left;
-    width: 55px;
-    height: 55px;
-    border-radius: 25%;
-    box-shadow: inset 0 0 1px white;
-}
-
-.liebiao_name {
-    position: relative;
-    float: left;
-    overflow: hidden;
-    margin-left: 10px;
-    width: 200px;
-    height: 30px;
-    font-size: 15px;
-    line-height: 30px;
-    background-color: rgb(143, 62, 62);
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.liebiao_artist {
-    position: relative;
-    float: left;
-    overflow: hidden;
-    margin-left: 10px;
-    width: 200px;
-    height: 30px;
-    font-size: 15px;
-    line-height: 30px;
-    background-color: #5D73D4;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
+/* musicPlayerListBar over */
