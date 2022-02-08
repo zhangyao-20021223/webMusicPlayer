@@ -50,6 +50,3 @@ let FPlistBar_h,FPlistBar_w;
 FPlistBar_h = FPListBar_js.offsetHeight;
 FPlistBar_w = FPListBar_js.offsetWidth;
 let FPlayerListContents_num = document.getElementsByClassName('FPlayerListContents').length;
-// for (let i = 0;i < FPlayerListContents_num;i++){
-    // document.getElementsByClassName('FPlayerListContents')[i].style.cssText += "height:" + FPlistBar_h + "px;" + "width:" + FPlistBar_w + "px;";
-// }

@@ -67,10 +67,16 @@
 }
 
 #FPImgBar img {
-    width: 90%;
-    height: 90%;
-    float: left;
-    padding: 5%;
+    width: 100%;
+    height: auto;
+    /*float: left;*/
+    /*padding: 5%;*/
+}
+#FPMusicName{
+    overflow: hidden;
+}
+#FPArtistName{
+    overflow: hidden;
 }
 
 #FPButtonBarAll {
@@ -124,7 +130,6 @@
 .button_list {
     transform: scale(.9);
 }
-
 
 /* 控制面板 over */
 
