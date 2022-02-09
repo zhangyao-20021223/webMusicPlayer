@@ -2,7 +2,7 @@ var FPlayer_bar_js = document.getElementById("FPAll"); //FPlayer整体的js
 var musicPlayerAllBar_js = document.getElementById("FPControlBar"); //控制面板的js
 var FPLyricBar_js = document.getElementById("FPLyricBar"); //歌词按钮的js && 歌词整体的js
 var FPListBar_js = document.getElementById("FPListBar"); //列表整体的js
-var FPLyricBar_in_bar = document.getElementById("FPLyricBar_in_bar"); //歌词显示面板的js
+var FPLyricBar_in_bar_js = document.getElementById("FPLyricBar_in_bar"); //歌词显示面板的js
 var button_list_js = document.getElementsByClassName("button_list"); //列表的按钮的js
 var Animation = "transition: all 600ms cubic-bezier(.23, 1, .32, 1);animation-duration: 5s;"
     //交互上的逻辑为：
@@ -19,14 +19,20 @@ var Animation = "transition: all 600ms cubic-bezier(.23, 1, .32, 1);animation-du
 
 
 var musicPlayerLyricBarFlag = false;
-FPLyricBar_in_bar.addEventListener("click", function() {
+FPLyricBar_in_bar_js.addEventListener("click", function() {
     if (musicPlayerLyricBarFlag == false) {
         FPLyricBar_js.style.cssText = "width: 100%;height:100%";
-        this.style.cssText = "width:100%;height:100%;overflow: scroll;" + Animation;
+        this.style.cssText = "width:100%;height:100%;overflow: scroll;margin-left:0%;" + Animation;
+        for(let i =0; i < this.getElementsByClassName("FPlayerLyricContent").length; i++){
+            this.getElementsByClassName("FPlayerLyricContent")[i].style.cssText = "height: 20%" + huandong
+        }
         musicPlayerLyricBarFlag = true;
     } else if (musicPlayerLyricBarFlag == true) {
         FPLyricBar_js.style.cssText = "width: 100%;height:27%";
-        this.style.cssText = "width:90%;height:80%;margin-left:5%;" + Animation;
+        this.style.cssText = "width:90%;height:80%;overflow: hidden;" + Animation;
+        for(let i =0; i < this.getElementsByClassName("FPlayerLyricContent").length; i++){
+            this.getElementsByClassName("FPlayerLyricContent")[i].style.cssText = "height: 100%"
+        }
         musicPlayerLyricBarFlag = false;
     }
 })

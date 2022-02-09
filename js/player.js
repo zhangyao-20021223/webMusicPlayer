@@ -148,6 +148,7 @@ FPlayer.FPlayer_AllBar_in = function () {
 }
 //歌词控制，获取audio的时间，并对歌词进行匹配,参数传递歌曲位置，进行歌词填充
 let Lyric_js = document.getElementById("FPLyricBar_in_bar");
+FPlayer.LyricTemplate = ""
 FPlayer.Lyric = function () {
 FPlayer.LyricTxt = []
     let Lyrics = FPlayer.resTxt.result[FPlayer.num].lrc.split('\n');
@@ -156,6 +157,9 @@ FPlayer.LyricTxt = []
     }
     // debugger
     FPlayer.LyricTxt.pop();
+    for (let i = 0; i < FPlayer.LyricTxt.length; i++){
+
+    }
     for (let i = 0; i < FPlayer.LyricTxt.length; i++) {
         let time = FPlayer.LyricTxt[i].split("]")[0];
         time = time.slice(1);
@@ -180,10 +184,7 @@ FPlayer.LyricTxt = []
                     LyrcFlag = FPlayer.LyricTxt[i].content;
                 }
             }
-
         }
-
-
     })
 }
 FPlayer_core = function () {
