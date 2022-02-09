@@ -240,7 +240,7 @@ FPlayer_Audio.addEventListener('timeupdate', function () {
                 console.log(FPlayer.LyricTxt[i].content);
                 // FPLyricBar_in_bar_js.style.cssText += "transform: translateY(" + FPlayer.transformHidden + "px)"
                 FPLyricBar_in_bar_js.style.cssText += "transform: translateY(" + FPlayer.transformHidden + "px)"
-                FPlayer.transformHidden = FPlayer.transformHidden + -34.55;
+                FPlayer.transformHidden = FPlayer.transformHidden + FPlayer.transformHidden;
                 LyrcFlag = FPlayer.LyricTxt[i].content;
             } else if (LyrcFlag == FPlayer.LyricTxt[i].content) {
                 LyrcFlag = FPlayer.LyricTxt[i].content;
@@ -248,7 +248,7 @@ FPlayer_Audio.addEventListener('timeupdate', function () {
                 console.log(FPlayer.LyricTxt[i].content);
                 LyrcFlag = FPlayer.LyricTxt[i].content;
                 FPLyricBar_in_bar_js.style.cssText += "transform: translateY(" + FPlayer.transformHidden + "px)"
-                FPlayer.transformHidden = FPlayer.transformHidden + -34.55;
+                FPlayer.transformHidden = FPlayer.transformHidden + FPlayer.transformHidden;
             }
         }
     }
