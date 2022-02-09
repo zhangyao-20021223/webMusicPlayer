@@ -231,18 +231,24 @@ FPlayer.Lyric = function () {
 
 
 LyrcFlag = "FPlayer";
+FPlayer.transformHidden = -34.55;
 FPlayer_Audio.addEventListener('timeupdate', function () {
     for (let i = 0; i < FPlayer.LyricTxt.length; i++) {
         let AudioTime = this.currentTime + 0.5;
         if (AudioTime >= FPlayer.LyricTxt[i].time && AudioTime <= FPlayer.LyricTxt[i + 1].time) {
             if (LyrcFlag == "FPlayer") {
                 console.log(FPlayer.LyricTxt[i].content);
+                // FPLyricBar_in_bar_js.style.cssText += "transform: translateY(" + FPlayer.transformHidden + "px)"
+                FPLyricBar_in_bar_js.style.cssText += "transform: translateY(" + FPlayer.transformHidden + "px)"
+                FPlayer.transformHidden = FPlayer.transformHidden + -34.55;
                 LyrcFlag = FPlayer.LyricTxt[i].content;
             } else if (LyrcFlag == FPlayer.LyricTxt[i].content) {
                 LyrcFlag = FPlayer.LyricTxt[i].content;
             } else if (LyrcFlag != FPlayer.LyricTxt[i].content) {
                 console.log(FPlayer.LyricTxt[i].content);
                 LyrcFlag = FPlayer.LyricTxt[i].content;
+                FPLyricBar_in_bar_js.style.cssText += "transform: translateY(" + FPlayer.transformHidden + "px)"
+                FPlayer.transformHidden = FPlayer.transformHidden + -34.55;
             }
         }
     }
