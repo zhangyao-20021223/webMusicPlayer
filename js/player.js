@@ -28,8 +28,8 @@ FPLyricBar_in_bar_js.addEventListener("click", function () {
         }
         musicPlayerLyricBarFlag = true;
     } else if (musicPlayerLyricBarFlag == true) {
-        FPLyricBar_js.style.cssText = "width: 100%;height:27%";
-        this.style.cssText = "width:90%;height:80%;overflow: hidden;" + Animation;
+        FPLyricBar_js.style.cssText = "width: 100%;height:40px";
+        this.style.cssText = "width:90%;height:100%;overflow: hidden;" + Animation;
         for (let i = 0; i < this.getElementsByClassName("FPlayerLyricContent").length; i++) {
             this.getElementsByClassName("FPlayerLyricContent")[i].style.cssText = "height: 100%"
         }
@@ -231,24 +231,29 @@ FPlayer.Lyric = function () {
 
 
 LyrcFlag = "FPlayer";
-FPlayer.transformHidden = -34.55;
+// let removeTrainslate = 34.55;
+let removeTrainslate = 1;
+FPlayer.LyricTrains = function () {
+    FPLyricBar_in_bar_js.style.cssText = "top: -" + removeTrainslate*40 + "px;"
+    console.log(removeTrainslate,removeTrainslate*40)
+    removeTrainslate++;
+}
 FPlayer_Audio.addEventListener('timeupdate', function () {
     for (let i = 0; i < FPlayer.LyricTxt.length; i++) {
-        let AudioTime = this.currentTime + 0.5;
+        let AudioTime = this.currentTime + 0;
         if (AudioTime >= FPlayer.LyricTxt[i].time && AudioTime <= FPlayer.LyricTxt[i + 1].time) {
             if (LyrcFlag == "FPlayer") {
                 console.log(FPlayer.LyricTxt[i].content);
-                // FPLyricBar_in_bar_js.style.cssText += "transform: translateY(" + FPlayer.transformHidden + "px)"
-                FPLyricBar_in_bar_js.style.cssText += "transform: translateY(" + FPlayer.transformHidden + "px)"
-                FPlayer.transformHidden = FPlayer.transformHidden + FPlayer.transformHidden;
                 LyrcFlag = FPlayer.LyricTxt[i].content;
+                // debugger
+                FPlayer.LyricTrains()
             } else if (LyrcFlag == FPlayer.LyricTxt[i].content) {
                 LyrcFlag = FPlayer.LyricTxt[i].content;
             } else if (LyrcFlag != FPlayer.LyricTxt[i].content) {
                 console.log(FPlayer.LyricTxt[i].content);
                 LyrcFlag = FPlayer.LyricTxt[i].content;
-                FPLyricBar_in_bar_js.style.cssText += "transform: translateY(" + FPlayer.transformHidden + "px)"
-                FPlayer.transformHidden = FPlayer.transformHidden + FPlayer.transformHidden;
+                // debugger
+                FPlayer.LyricTrains()
             }
         }
     }
