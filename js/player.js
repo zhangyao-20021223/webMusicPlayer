@@ -1,10 +1,3 @@
-var FPlayer_bar_js = document.getElementById("FPAll"); //FPlayer整体的js
-var musicPlayerAllBar_js = document.getElementById("FPControlBar"); //控制面板的js
-var FPLyricBar_js = document.getElementById("FPLyricBar"); //歌词按钮的js && 歌词整体的js
-var FPListBar_js = document.getElementById("FPListBar"); //列表整体的js
-var FPLyricBar_in_bar_js = document.getElementById("FPLyricBar_in_bar"); //歌词显示面板的js
-var button_list_js = document.getElementsByClassName("button_list"); //列表的按钮的js
-var Animation = "transition: all 600ms cubic-bezier(.23, 1, .32, 1);animation-duration: 5s;"
 //交互上的逻辑为：
 //       列表面板：
 //              列表按钮触发列表到最顶层，期间涉及到z-index的调整，如果对页面有影响可以自行更改
@@ -16,76 +9,85 @@ var Animation = "transition: all 600ms cubic-bezier(.23, 1, .32, 1);animation-du
 //       控制面板：
 //              控制面板初始化在最上层，有四个显式按钮，三个隐式触发事件，四个按钮分别是（从左到右顺序）上一首/暂停/下一首/打开列表
 //              三个隐式按钮是：歌曲名称显式块/作曲家显式块/歌曲图片显式块，三个块长按可以触发复制/复制/保存图片，功能
+//歌词按钮的js && 歌词整体的js
+var FPLyricBar_js = document.getElementById("FPLyricBar");
+//列表整体的DOM
+var FPListBar_js = document.getElementById("FPListBar");
+//歌词显示面板的DOM
+var FPLyricBar_in_bar_js = document.getElementById("FPLyricBar_in_bar");
+//列表的按钮的DOM
+var button_list_js = document.getElementById("button_list");
+//缓动函数附加
+var Animation = "transition: all 600ms cubic-bezier(.23, 1, .32, 1);animation-duration: 5s;"
+// 歌词面板开关flag
+var FPlayerLyricBarFlag = false;
 
-
-var musicPlayerLyricBarFlag = false;
+//监听歌词面板点击，对歌词面板进行大小操作
 FPLyricBar_in_bar_js.addEventListener("click", function () {
-    if (musicPlayerLyricBarFlag == false) {
+    if (FPlayerLyricBarFlag == false) {
         FPLyricBar_js.style.cssText = "width: 100%;height:100%";
         this.style.cssText = "width:100%;height:100%;overflow: scroll;margin-left:0%;" + Animation;
         for (let i = 0; i < this.getElementsByClassName("FPlayerLyricContent").length; i++) {
             this.getElementsByClassName("FPlayerLyricContent")[i].style.cssText = "height: 20%";
         }
-        musicPlayerLyricBarFlag = true;
-    } else if (musicPlayerLyricBarFlag == true) {
+        FPlayerLyricBarFlag = true;
+    } else if (FPlayerLyricBarFlag == true) {
         FPLyricBar_js.style.cssText = "width: 100%;height:40px";
         this.style.cssText = "width:90%;height:100%;overflow: hidden;" + Animation;
         for (let i = 0; i < this.getElementsByClassName("FPlayerLyricContent").length; i++) {
             this.getElementsByClassName("FPlayerLyricContent")[i].style.cssText = "height: 100%"
         }
-        musicPlayerLyricBarFlag = false;
+        FPlayerLyricBarFlag = false;
     }
 })
+//播放器列表开关flag
+var FPlayerListBarFlag = false;
 
-var musicPlayerListBarFlag = false;
-button_list_js[0].addEventListener('click', function () {
-    if (musicPlayerListBarFlag == false) {
+button_list_js.addEventListener('click', function () {
+    if (FPlayerListBarFlag == false) {
         FPListBar_js.style.cssText = "z-index: 1;transform: translateY(0px);" + Animation;
-        musicPlayerListBarFlag = true;
+        FPlayerListBarFlag = true;
     }
-
 })
 FPListBar_js.addEventListener('click', function () {
-    if (musicPlayerListBarFlag == true) {
+    if (FPlayerListBarFlag == true) {
         FPListBar_js.style.cssText = "z-index:1;transform: translateY(160px);" + Animation
-        musicPlayerListBarFlag = false;
+        FPlayerListBarFlag = false;
     }
 })
-
-let FPlistBar_h, FPlistBar_w;
-FPlistBar_h = FPListBar_js.offsetHeight;
-FPlistBar_w = FPListBar_js.offsetWidth;
-let FPlayerListContents_num = document.getElementsByClassName('FPlayerListContents').length;
-
 
 let FPlayer = {}
 
 FPlayer.xhr = function () {
     const FPlayer_xhr = new XMLHttpRequest;
-    // xhr.open("GET", "https://zk-nhbook.osdn.io/getMusic.php");
     FPlayer_xhr.open("GET", "json.json", false);
-    // FPlayer_xhr.responseType = "json";
     FPlayer_xhr.onreadystatechange = function () {
         let result;
         if (FPlayer_xhr.readyState == 4) {
             if ((FPlayer_xhr.status >= 200 && FPlayer_xhr.status < 300) || (FPlayer_xhr.status == 304)) {
                 result = JSON.parse(FPlayer_xhr.responseText);
-                // FPlayer.resTxt = new Object();
                 FPlayer.resTxt = result;
             } else {
-                alert("播放器加载失败");
+                alert("链接请求失败");
             }
         }
     }
     FPlayer_xhr.send();
 }
 
-FPlayer.templatelist = '<div class="FPlayerListContents"><div><img class="FPlayerListContent_img" src="svg/jiaopian.svg" alt="#"></div><div><p class="FPlayerListContent_p1"></p></div><div><p class="FPlayerListContent_p2"></p></div></div>'
+//播放列表模板
+FPlayer.templatelist = '<div class="FPlayerListContents"><img class="FPlayerListContent_img" src="svg/jiaopian.svg" alt="#"><p class="FPlayerListContent_p1"></p><p class="FPlayerListContent_p2"></p></div>'
+//存放返回json变量
 FPlayer.resTxt = {};
+//播放器列表变量
 FPlayer.list = [];
+//生命播放器的Audio()
 FPlayer_Audio = new Audio();
+//播放器目前播放到的歌曲为止
 FPlayer.num = 0;
+//播放器Audio()播放状态flag
 var FPlayer_Audio_flag = false;
+
 FPlayer.star = function () {
     //初始化
     const xhrLength = FPlayer.resTxt.result.length;
@@ -96,9 +98,9 @@ FPlayer.star = function () {
         FPListBar_in_bar_js.children[i].id = "FPlayerListContents_" + i;
     }
     for (let i = 0; i < xhrLength; i++) {
-        FPListBar_in_bar_js.children[i].children[0].children[0].src = FPlayer.resTxt.result[i].cover + "";
-        FPListBar_in_bar_js.children[i].children[1].children[0].innerHTML = FPlayer.resTxt.result[i].name;
-        FPListBar_in_bar_js.children[i].children[2].children[0].innerHTML = FPlayer.resTxt.result[i].artist;
+        FPListBar_in_bar_js.children[i].children[0].src = FPlayer.resTxt.result[i].cover;
+        FPListBar_in_bar_js.children[i].children[1].innerHTML = FPlayer.resTxt.result[i].name;
+        FPListBar_in_bar_js.children[i].children[2].innerHTML = FPlayer.resTxt.result[i].artist;
     }
     //默认控制面板封面是第一首
     //为列表中的所有块打上监听
@@ -114,12 +116,10 @@ FPlayer.star = function () {
 FPlayer.Audio = function (mode) {
     //生成播放列表
     if (FPlayer.list.length == 0) {
-        // debugger;
         for (let i = 0; i < FPlayer.resTxt.result.length; i++) {
             FPlayer.list[i] = FPlayer.resTxt.result[i].url;
         }
     }
-    // debugger
     if (FPlayer_Audio.src != FPlayer.list[FPlayer.num]) {
         FPlayer_Audio.src = FPlayer.list[FPlayer.num];
     }
@@ -173,7 +173,7 @@ FPlayer_Audio.addEventListener("error", function () {
 })
 
 FPlayer.pause = function () {
-    document.getElementsByClassName("button_pause")[0].addEventListener("click", function () {
+    document.getElementById("button_pause").addEventListener("click", function () {
         if (FPlayer_Audio_flag == false) {
             FPlayer.Audio(1);
             FPlayer_Audio_flag = true;
@@ -185,12 +185,12 @@ FPlayer.pause = function () {
 }
 
 FPlayer.go = function () {
-    document.getElementsByClassName("button_go")[0].addEventListener('click', function () {
+    document.getElementById("button_go").addEventListener('click', function () {
         FPlayer.Audio(3);
     })
 }
 FPlayer.back = function () {
-    document.getElementsByClassName("button_back")[0].addEventListener('click', function () {
+    document.getElementById("button_back").addEventListener('click', function () {
         FPlayer.Audio(2);
     })
 }
@@ -206,7 +206,8 @@ FPlayer.FPlayer_AllBar_in = function () {
     document.getElementById("FPArtistName").innerHTML = artist;
     document.getElementById("FPImgBar").children[0].src = img;
 }
-//歌词控制，获取audio的时间，并对歌词进行匹配,参数传递歌曲位置，进行歌词填充
+
+//歌词控制，获取audio的时间，并对歌词进行匹配,进行歌词填充
 FPlayer.LyricBartemplate = '<div class="FPlayerLyricContent"><p></p></div>'
 FPlayer.Lyric = function () {
     FPlayer.LyricTxt = []
@@ -231,11 +232,12 @@ FPlayer.Lyric = function () {
 
 
 LyrcFlag = "FPlayer";
-// let removeTrainslate = 34.55;
+
 let removeTrainslate = 1;
+
 FPlayer.LyricTrains = function () {
-    FPLyricBar_in_bar_js.style.cssText = "top: -" + removeTrainslate*40 + "px;"
-    console.log(removeTrainslate,removeTrainslate*40)
+    FPLyricBar_in_bar_js.style.cssText = "top: -" + removeTrainslate * 40 + "px;"
+    console.log(removeTrainslate, removeTrainslate * 40)
     removeTrainslate++;
 }
 FPlayer_Audio.addEventListener('timeupdate', function () {
@@ -243,16 +245,12 @@ FPlayer_Audio.addEventListener('timeupdate', function () {
         let AudioTime = this.currentTime + 0;
         if (AudioTime >= FPlayer.LyricTxt[i].time && AudioTime <= FPlayer.LyricTxt[i + 1].time) {
             if (LyrcFlag == "FPlayer") {
-                console.log(FPlayer.LyricTxt[i].content);
                 LyrcFlag = FPlayer.LyricTxt[i].content;
-                // debugger
                 FPlayer.LyricTrains()
             } else if (LyrcFlag == FPlayer.LyricTxt[i].content) {
                 LyrcFlag = FPlayer.LyricTxt[i].content;
             } else if (LyrcFlag != FPlayer.LyricTxt[i].content) {
-                console.log(FPlayer.LyricTxt[i].content);
                 LyrcFlag = FPlayer.LyricTxt[i].content;
-                // debugger
                 FPlayer.LyricTrains()
             }
         }
