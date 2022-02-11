@@ -1,43 +1,11 @@
 <!DOCTYPE html>
 
 <head>
-    <meta charset="UTF-8">
     <title>FPlayer</title>
-
     <script defer src="js/player.js"></script>
-    <script defer src="js/style.js"></script>
-
-    <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
-<div id="FPAll">
-    <div id="FPControlBar">
-        <div id="FPImgBar"><img src="./svg/jiaopian.svg" alt="./svg/jiaopian.svg"></div>
-        <div id="FPButtonBarAll">
-            <div id="FPArtistBar">
-                <p id="FPMusicName">未知</p>
-                <p id="FPArtistName">未知</p>
-            </div>
-            <div class="FPControlButton"><img id="button_go" src="./svg/previous.svg" type="image/svg+xml">
-            </div>
-            <div class="FPControlButton"><img id="button_pause" src="./svg/zanting.svg" type="image/svg+xml">
-            </div>
-            <div class="FPControlButton"><img id="button_back" src="./svg/previous.svg" type="image/svg+xml">
-            </div>
-            <div class="FPControlButton"><img id="button_list" src="./svg/liebiao.svg" type="image/svg+xml">
-            </div>
-        </div>
-    </div>
-    <div class="FPlayer_Animation" id="FPLyricBar">
-        <div id="FPLyricBar_in_bar"></div>
-    </div>
-    <div id="FPListBar">
-        <div id="FPListBar_in_bar"></div>
-    </div>
-</div>
-
-<!-- <audio src=""></audio> -->
+<div id="FPlayer" fplayer_url="json.json"></div>
 </body>
 
 </html>

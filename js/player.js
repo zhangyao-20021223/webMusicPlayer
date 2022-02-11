@@ -10,6 +10,20 @@
 //              控制面板初始化在最上层，有四个显式按钮，三个隐式触发事件，四个按钮分别是（从左到右顺序）上一首/暂停/下一首/打开列表
 //              三个隐式按钮是：歌曲名称显式块/作曲家显式块/歌曲图片显式块，三个块长按可以触发复制/复制/保存图片，功能
 //歌词按钮的js && 歌词整体的js
+
+//FPlayer播放器HTML的插入
+document.getElementById("FPlayer").innerHTML = "<div id=\"FPAll\"><div id=\"FPControlBar\"><div id=\"FPImgBar\"><img src=\"./svg/jiaopian.svg\" alt=\"./svg/jiaopian.svg\"></div><div id=\"FPButtonBarAll\"><div id=\"FPArtistBar\"><p id=\"FPMusicName\">未知</p><p id=\"FPArtistName\">未知</p></div><div class=\"FPControlButton\"><img id=\"button_go\" src=\"./svg/previous.svg\" type=\"image/svg+xml\"></div><div class=\"FPControlButton\"><img id=\"button_pause\" src=\"./svg/zanting.svg\" type=\"image/svg+xml\"></div><div class=\"FPControlButton\"><img id=\"button_back\" src=\"./svg/previous.svg\" type=\"image/svg+xml\"></div><div class=\"FPControlButton\"><img id=\"button_list\" src=\"./svg/liebiao.svg\" type=\"image/svg+xml\"></div></div></div><div class=\"FPlayer_Animation\" id=\"FPLyricBar\"><div id=\"FPLyricBar_in_bar\"></div></div><div id=\"FPListBar\"><div id=\"FPListBar_in_bar\"></div></div></div>"
+//FPlayer播放器CSS的插入
+function addConfigBoxStyle() {
+    let style = document.createElement('style')
+    style.type = "text/css";
+    let styleString = `*{padding:0;margin:0}.FPlayer_Animation{transition:all 600ms cubic-bezier(.23,1,.32,1);animation-duration:5s}#FPAll{width:300px;height:160px;position:relative;border-radius:12px;overflow:hidden;box-shadow:0 0 10px black;top:50px;left:5px}#FPControlBar{width:300px;height:120px;background-color:#462e7c;position:absolute;z-index:1}#FPImgBar{position:absolute;width:100%;height:auto;float:left;overflow:hidden;transform:translateY(-10%)}#FPImgBar img{width:100%;height:auto}#FPMusicName{overflow:hidden}#FPArtistName{overflow:hidden}#FPButtonBarAll{width:100%;height:100%;float:right;position:relative;background-color:rgba(0,0,0,0.4)}#FPArtistBar{width:100%;height:60%;float:left}#FPArtistBar p:nth-child(1){height:65%;display:block;color:white;width:100%;font-size:30px;margin-left:6%}#FPArtistBar p:nth-child(2){width:100%;height:35%;display:block;color:#c2c2c2;font-size:15px;margin-left:6%}.FPControlButton{width:25%;height:30%;float:left}.FPControlButton img{width:100%;height:100%}#button_back{transform:rotateY(180deg)}#button_list{transform:scale(.9)}#FPLyricBar{width:300px;height:40px;background-color:#58438b;position:absolute;bottom:0;z-index:1;overflow:hidden}#FPLyricBar_in_bar{color:white;text-align:center;width:90%;height:100%;margin-left:5%;position:absolute}.FPlayerLyricContent p{width:100%;height:100%;font-size:25px}#FPLyricBar_in_bar::-webkit-scrollbar{display:none}.FPlayer_lyric{display:block;font-size:20px;white-space:nowrap;margin-top:4px}.FPlayerLyricContent{width:100%;height:40px}#FPListBar{width:100%;height:100%;background-color:#462e7c;position:relative;z-index:0;transform:translateY(160px);overflow:scroll}#FPListBar_in_bar{width:100%;height:auto;overflow:hidden;padding-top:2px;padding-bottom:2px;position:absolute}#FPListBar::-webkit-scrollbar{display:none}.FPlayerListContents{width:48%;height:72px;margin:1%;border-radius:12px;display:block;float:left;overflow:hidden;box-shadow:0 0 5px #190634;position:relative}.FPlayerListContents div:nth-child(1){position:absolute;width:100%;height:auto;float:left;overflow:hidden}.FPlayerListContent_img{width:100%;height:auto;float:left;border-radius:10%;background-color:#fff;transform:translateY(0%)}.FPlayerListContents div:nth-child(2),.FPlayerListContents div:nth-child(3){position:absolute;display:block;width:100%;height:36px;float:left;color:white;background-color:rgba(0,0,0,0.41);line-height:36px;text-align:center}.FPlayerListContents div:nth-child(2){top:0}.FPlayerListContents div:nth-child(3){bottom:0}.FPlayerListContent_p1,.FPlayerListContent_p2{width:100%;height:50%;white-space:nowrap;overflow:hidden;color:white;position:absolute;font-size:20px;text-align:center;background-color:rgba(0,0,0,0.30)}.FPlayerListContent_p2{margin-top:36px}`
+    let text = document.createTextNode(styleString)
+    style.appendChild(text);
+    document.getElementsByTagName('head')[0].appendChild(style);
+}
+addConfigBoxStyle()
+
 var FPLyricBar_js = document.getElementById("FPLyricBar");
 //列表整体的DOM
 var FPListBar_js = document.getElementById("FPListBar");
@@ -58,9 +72,11 @@ FPListBar_js.addEventListener('click', function () {
 
 let FPlayer = {}
 
+FPlayer.FPlayer_url = document.getElementById("FPlayer").attributes.fplayer_url.value;
+
 FPlayer.xhr = function () {
     const FPlayer_xhr = new XMLHttpRequest;
-    FPlayer_xhr.open("GET", "json.json", false);
+    FPlayer_xhr.open("GET", FPlayer.FPlayer_url, false);
     FPlayer_xhr.onreadystatechange = function () {
         let result;
         if (FPlayer_xhr.readyState == 4) {
