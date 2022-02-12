@@ -24,17 +24,38 @@ function addConfigBoxStyle() {
 }
 addConfigBoxStyle()
 
-var FPLyricBar_js = document.getElementById("FPLyricBar");
 //列表整体的DOM
-var FPListBar_js = document.getElementById("FPListBar");
+var FPLyricBar_js = document.getElementById("FPLyricBar");
 //歌词显示面板的DOM
-var FPLyricBar_in_bar_js = document.getElementById("FPLyricBar_in_bar");
+var FPListBar_js = document.getElementById("FPListBar");
 //列表的按钮的DOM
-var button_list_js = document.getElementById("button_list");
+var FPLyricBar_in_bar_js = document.getElementById("FPLyricBar_in_bar");
 //缓动函数附加
-var Animation = "transition: all 600ms cubic-bezier(.23, 1, .32, 1);animation-duration: 5s;"
+var button_list_js = document.getElementById("button_list");
 // 歌词面板开关flag
+var Animation = "transition: all 600ms cubic-bezier(.23, 1, .32, 1);animation-duration: 5s;"
+//播放列表模板
 var FPlayerLyricBarFlag = false;
+//FPlayer的开始
+let FPlayer = {}
+//列表模板
+FPlayer.templatelist = '<div class="FPlayerListContents"><img class="FPlayerListContent_img" src="svg/jiaopian.svg" alt="#"><p class="FPlayerListContent_p1"></p><p class="FPlayerListContent_p2"></p></div>'
+//存放返回json变量
+FPlayer.resTxt = {};
+//播放器列表变量
+FPlayer.list = [];
+//生命播放器的Audio()
+FPlayer_Audio = new Audio();
+//播放器目前播放到的歌曲为止
+FPlayer.num = 0;
+//播放器Audio()播放状态flag
+var FPlayer_Audio_flag = false;
+//播放器列表开关flag
+var FPlayerListBarFlag = false;
+//从div中获取json的url
+FPlayer.FPlayer_url = document.getElementById("FPlayer").attributes.fplayer_url.value;
+//歌词控制，获取audio的时间，并对歌词进行匹配,进行歌词填充
+FPlayer.LyricBartemplate = '<div class="FPlayerLyricContent"><p></p></div>'
 
 //监听歌词面板点击，对歌词面板进行大小操作
 FPLyricBar_in_bar_js.addEventListener("click", function () {
@@ -54,8 +75,6 @@ FPLyricBar_in_bar_js.addEventListener("click", function () {
         FPlayerLyricBarFlag = false;
     }
 })
-//播放器列表开关flag
-var FPlayerListBarFlag = false;
 
 button_list_js.addEventListener('click', function () {
     if (FPlayerListBarFlag == false) {
@@ -70,9 +89,6 @@ FPListBar_js.addEventListener('click', function () {
     }
 })
 
-let FPlayer = {}
-
-FPlayer.FPlayer_url = document.getElementById("FPlayer").attributes.fplayer_url.value;
 
 FPlayer.xhr = function () {
     const FPlayer_xhr = new XMLHttpRequest;
@@ -91,18 +107,6 @@ FPlayer.xhr = function () {
     FPlayer_xhr.send();
 }
 
-//播放列表模板
-FPlayer.templatelist = '<div class="FPlayerListContents"><img class="FPlayerListContent_img" src="svg/jiaopian.svg" alt="#"><p class="FPlayerListContent_p1"></p><p class="FPlayerListContent_p2"></p></div>'
-//存放返回json变量
-FPlayer.resTxt = {};
-//播放器列表变量
-FPlayer.list = [];
-//生命播放器的Audio()
-FPlayer_Audio = new Audio();
-//播放器目前播放到的歌曲为止
-FPlayer.num = 0;
-//播放器Audio()播放状态flag
-var FPlayer_Audio_flag = false;
 
 FPlayer.star = function () {
     //初始化
@@ -128,7 +132,7 @@ FPlayer.star = function () {
     }
     FPlayer.FPlayer_AllBar_in(0);
 }
-//music_num为歌曲位置，mode为模式，（ 0：停止播放（ 1：开始播放（ 2：上一首 （ 3：下一首 （ 4：
+//music_num为歌曲位置，mode为模式，（ 0：停止播放（ 1：开始播放（ 2：上一首 （ 3：下一首
 FPlayer.Audio = function (mode) {
     //生成播放列表
     if (FPlayer.list.length == 0) {
@@ -136,6 +140,7 @@ FPlayer.Audio = function (mode) {
             FPlayer.list[i] = FPlayer.resTxt.result[i].url;
         }
     }
+
     if (FPlayer_Audio.src != FPlayer.list[FPlayer.num]) {
         FPlayer_Audio.src = FPlayer.list[FPlayer.num];
     }
@@ -180,6 +185,7 @@ FPlayer_Audio.addEventListener("ended", function () {
     FPlayer.num++;
     FPlayer.Audio(1);
 })
+
 FPlayer_Audio.addEventListener("error", function () {
     if (FPlayer.num > FPlayer.list.length) {
         FPlayer.Audio(0);
@@ -205,12 +211,12 @@ FPlayer.go = function () {
         FPlayer.Audio(3);
     })
 }
+
 FPlayer.back = function () {
     document.getElementById("button_back").addEventListener('click', function () {
         FPlayer.Audio(2);
     })
 }
-
 
 //控制封面的变换，传递歌曲在json中的顺序参数：0,1,2,3,4、、、
 FPlayer.FPlayer_AllBar_in = function () {
@@ -223,8 +229,6 @@ FPlayer.FPlayer_AllBar_in = function () {
     document.getElementById("FPImgBar").children[0].src = img;
 }
 
-//歌词控制，获取audio的时间，并对歌词进行匹配,进行歌词填充
-FPlayer.LyricBartemplate = '<div class="FPlayerLyricContent"><p></p></div>'
 FPlayer.Lyric = function () {
     FPlayer.LyricTxt = []
     let Lyrics = FPlayer.resTxt.result[FPlayer.num].lrc.split('\n');
@@ -272,6 +276,7 @@ FPlayer_Audio.addEventListener('timeupdate', function () {
         }
     }
 })
+
 FPlayer_core = function () {
     FPlayer.xhr();
     FPlayer.star();
@@ -282,4 +287,3 @@ FPlayer_core = function () {
     FPlayer.Lyric();
 }
 FPlayer_core();
-
